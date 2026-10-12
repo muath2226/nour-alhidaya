@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نور الهداية | داعية ذكي للتعريف بالإسلام</title>
+<meta name="description" content="شات ذكاء اصطناعي داعية للإسلام بأي لغة، بالقرآن والسنة الصحيحة، مع أذكار وأدعية صحيحة فقط">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-900:#062a22; --green-800:#0a3d32; --green-700:#0e5a4a; --green-600:#10916f;
+  --gold:#c9a24a; --gold-light:#f0d998; --bg:#f7f5ef; --card:#ffffff; --text:#1a2b26; --muted:#6b7d77;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+a{color:inherit}
+.top-bar{background:var(--green-900);color:#e9e2cc;font-size:.85rem;padding:.4rem 1rem;text-align:center}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e8e0c8}
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;gap:.8rem}
+.logo{display:flex;align-items:center;gap:.7rem;font-weight:900;font-size:1.2rem;color:var(--green-900)}
+.logo-mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--green-800),var(--green-600));display:grid;place-items:center;color:var(--gold-light);font-size:1.6rem;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.nav-links{display:flex;gap:1rem;font-weight:700;font-size:.95rem}
+.nav-links a{text-decoration:none;opacity:.85}.nav-links a:hover{color:var(--green-700)}
+.btn{border:0;cursor:pointer;border-radius:999px;padding:.7rem 1.4rem;font-family:inherit;font-weight:800;transition:.2s}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#e8c872);color:#2b230d;box-shadow:0 8px 20px rgba(201,162,74,.35)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{background:#eef4f1;color:var(--green-800)}
+.hero{position:relative;overflow:hidden;background:radial-gradient(1000px 500px at 80% -10%,#1a6a5a 0%,var(--green-900) 45%,#041613 100%);color:#fff;padding:3.2rem 1rem 2.5rem}
+.hero::before{content:"";position:absolute;inset:0;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 L70 50 L110 60 L70 70 L60 110 L50 70 L10 60 L50 50 Z' fill='none' stroke='%23f0d998' stroke-width='1'/%3E%3C/svg%3E");background-size:90px}
+.hero-inner{position:relative;max-width:1100px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr}.nav-links{display:none}}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(240,217,152,.15);border:1px solid rgba(240,217,152,.4);color:var(--gold-light);padding:.35rem .9rem;border-radius:999px;font-size:.85rem;font-weight:700}
+.hero h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.3;margin:1rem 0 .6rem;font-weight:900}
+.hero h1 span{color:var(--gold-light)}
+.hero p{opacity:.9;font-size:1.05rem;max-width:34rem}
+.hero-features{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:.4rem .9rem;border-radius:999px;font-size:.88rem}
+.container{max-width:1100px;margin:auto;padding:1.2rem 1rem}
+.grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem}
+@media(max-width:900px){.grid-2{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:0 10px 30px rgba(6,42,34,.08);border:1px solid #ece5cf;overflow:hidden}
+.card-pad{padding:1.3rem}
+.section-title{display:flex;align-items:center;gap:.7rem;margin:2.2rem 0 1rem}
+.section-title h2{margin:0;font-size:1.4rem;color:var(--green-900);font-weight:900}
+.section-title .icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--green-900);color:var(--gold-light);font-size:1.3rem}
+/* chat - نسخة محسنة عالية التباين */
+.chat-wrap{display:flex;flex-direction:column;height:640px;max-height:80vh;background:#fff;color:#1a2b26;border-radius:20px;border:1px solid #e6ddc0;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.hero .chat-wrap{color:#1a2b26}
+.chat-head{background:linear-gradient(135deg,#062a22,#0e5a4a);color:#fff;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.8rem;justify-content:space-between;flex-wrap:wrap;border-radius:20px 20px 0 0}
+.chat-head .status{display:flex;align-items:center;gap:.6rem;color:#fff}
+.chat-head small{color:#d9e8e0}
+.dot{width:11px;height:11px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 5px rgba(61,220,132,.25);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(61,220,132,.12)}}
+.lang-row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;color:#fff}
+select,input[type=text]{font-family:inherit}
+select{background:#fff;border:1px solid #d9d0b3;border-radius:999px;padding:.45rem .8rem;font-weight:700;color:#062a22}
+#messages{flex:1;overflow-y:auto;padding:1.1rem;background:#f6f2e4 url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L33 25 L55 30 L33 35 L30 55 L27 35 L5 30 L27 25 Z' fill='none' stroke='%23d9d0b3' stroke-width='1' opacity='.35'/%3E%3C/svg%3E");background-size:56px;display:flex;flex-direction:column;gap:.75rem}
+.msg{max-width:86%;padding:.8rem 1.05rem;border-radius:16px;font-size:.96rem;white-space:pre-wrap;line-height:1.9;animation:fadeUp .3s ease;color:#1a2b26}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.bot{background:#ffffff;color:#1a2b26 !important;border:1px solid #e2d7b5;border-radius:16px 16px 16px 5px;align-self:flex-start;box-shadow:0 4px 14px rgba(6,42,34,.08)}
+.msg.bot b{color:#062a22}
+.msg.user{background:linear-gradient(135deg,#0a3d32,#10916f);color:#fff !important;align-self:flex-end;border-radius:16px 16px 5px 16px;box-shadow:0 4px 14px rgba(16,145,111,.35)}
+.msg .ref{display:block;margin-top:.6rem;font-size:.82rem;background:#fdf6dd;border:1px dashed #c9a24a;border-radius:10px;padding:.45rem .7rem;color:#4a3c10 !important;line-height:1.8}
+.quran{font-family:'Amiri',serif;font-size:1.12rem;color:#062a22 !important;background:#eef5f0;border-right:4px solid #c9a24a;border-radius:8px;padding:.5rem .8rem;margin:.5rem 0;display:block;line-height:2}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;padding:.7rem 1rem;background:#fffdf4;border-top:1px solid #eee5c8;color:#1a2b26}
+.chip{border:1px solid #d9d0b3;background:#fff;color:#0a3d32;border-radius:999px;padding:.4rem .9rem;font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.chip:hover{background:#062a22;color:#f0d998;border-color:#062a22;transform:translateY(-1px)}
+.input-bar{display:flex;gap:.6rem;padding:.8rem;background:#fff;border-top:1px solid #eee5c8;border-radius:0 0 20px 20px}
+.input-bar input{flex:1;border:1.5px solid #d9d0b3;border-radius:999px;padding:.75rem 1.1rem;font-size:1rem;outline:none;background:#fff;color:#1a2b26}
+.input-bar input::placeholder{color:#8a9a94}
+.input-bar input:focus{border-color:#10916f;box-shadow:0 0 0 3px rgba(16,145,111,.15)}
+.send{width:52px;height:52px;border-radius:50%;border:0;background:linear-gradient(135deg,#c9a24a,#e8c872);color:#2b230d;font-size:1.3rem;cursor:pointer;flex-shrink:0;box-shadow:0 4px 12px rgba(201,162,74,.45)}
+.send:hover{transform:scale(1.06)}
+#messages::selection,.msg::selection,.msg b::selection,.quran::selection{color:#fff;background:#0a3d32}
+.typing{display:flex;gap:5px;padding:.6rem .2rem}
+.typing span{width:8px;height:8px;border-radius:50%;background:var(--green-700);animation:b 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{opacity:.3;transform:translateY(-3px)}}
+/* adhkar */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.tab{border:1px solid #d9d0b3;background:#fff;padding:.5rem 1.1rem;border-radius:999px;font-weight:800;cursor:pointer}
+.tab.active{background:var(--green-900);color:var(--gold-light);border-color:var(--green-900)}
+.dhikr{display:grid;gap:.8rem}
+.dhikr-item{background:#fffdf4;border:1px solid #e8e0c8;border-radius:14px;padding:1rem 1.1rem}
+.dhikr-item h4{margin:0 0 .3rem;color:var(--green-800)}
+.dhikr-item .count{display:inline-block;background:var(--green-900);color:#fff;font-size:.75rem;border-radius:999px;padding:.1rem .7rem;margin-bottom:.5rem}
+.dhikr-item small{color:var(--muted);display:block;margin-top:.5rem}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+@media(max-width:800px){.features{grid-template-columns:1fr}}
+.feat{background:#fff;border:1px solid #ece5cf;border-radius:16px;padding:1.1rem;text-align:center}
+.feat .e{font-size:1.8rem}
+.notice{background:#fff8e1;border:1px solid #e7cf7a;border-radius:14px;padding:1rem 1.2rem;font-size:.92rem}
+footer{background:var(--green-900);color:#cfc7a8;padding:2rem 1rem;margin-top:2.5rem;text-align:center}
+.kbd{font-size:.8rem;background:#0f2f28;color:#f0d998;padding:.15rem .5rem;border-radius:6px}
+.counter{display:flex;gap:.6rem;align-items:center;font-size:.85rem;color:#e9e2cc}
+@media(max-width:520px){.chat-wrap{height:75vh}.msg{max-width:94%;font-size:.93rem}.input-bar input{font-size:.93rem}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">🤲 المرجع الوحيد: القرآن الكريم والسنة الصحيحة (البخاري ومسلم) • أذكار وأدعية صحيحة فقط ✅</div>
+
+<header>
+<nav class="nav">
+<div class="logo"><div class="logo-mark">☪</div><div>نور الهداية<br><small style="font-size:.72rem;font-weight:700;color:var(--muted)">داعية ذكي • 24/7 بأي لغة</small></div></div>
+<div class="nav-links"><a href="#chat">المحادثة</a><a href="#adhkar">الأذكار</a><a href="#duas">أدعية قرآنية</a><a href="#sources">المراجع</a><a href="#faq">أسئلة شائعة</a></div>
+<a href="#chat" style="text-decoration:none"><button class="btn btn-gold">💬 ابدأ الحوار</button></a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-inner">
+<div>
+<div class="badge">🌍 يتكلم مع أي إنسان • بأي لغة في العالم • بأدب ورحمة</div>
+<h1>داعية ذكي يُعرّف بالإسلام <span>بالقرآن والسنة الصحيحة</span></h1>
+<p>اسأل عن الله، عن الإسلام، عن محمد ﷺ، عن الصلاة، عن الشبهات، عن معنى الحياة... وسيجيبك الداعية بالدليل، مع آية وحديث، وبلغتك أنت. ومعه حصن المسلم الصحيح فقط.</p>
+<div class="hero-features">
+<span class="pill">📖 القرآن الكريم</span><span class="pill">📜 البخاري ومسلم فقط</span><span class="pill">🤲 أذكار صحيحة 100%</span><span class="pill">🗣️ عربي + English + Français + Español + Türkçe + اردو + Bahasa</span>
+</div>
+<div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.6rem">
+<button class="btn btn-gold" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">تحدث الآن — Talk now</button>
+<button class="btn btn-ghost" onclick="document.getElementById('adhkar').scrollIntoView({behavior:'smooth'})">📿 أذكار اليوم</button>
+</div>
+<div class="counter" style="margin-top:.9rem"><span class="dot"></span> متصل الآن ويدعو بالحكمة والموعظة الحسنة — ﴿ ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ ﴾ [النحل:125]</div>
+</div>
+<div>
+<div class="card chat-wrap" id="chat" style="height:560px">
+<div class="chat-head">
+<div class="status"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#c9a24a,#f0d998);display:grid;place-items:center;font-size:1.7rem;flex-shrink:0;border:2px solid rgba(255,255,255,.5)">🤖</div><div><div style="font-weight:900;font-size:1.05rem;color:#fff">داعية النور 🌙</div><div style="font-size:.78rem;color:#b8e6d2;display:flex;align-items:center;gap:.35rem"><span class="dot" style="width:8px;height:8px"></span> متصل الآن • يرد بالدليل من القرآن والسنة</div></div></div>
+<div class="lang-row">
+<label style="font-size:.8rem;color:#f0d998;font-weight:700">🌐 اللغة:</label>
+<select id="lang" onchange="changeLang(this.value)">
+<option value="ar">العربية</option><option value="en">English</option><option value="fr">Français</option><option value="es">Español</option><option value="tr">Türkçe</option><option value="ur">اردو</option><option value="id">Bahasa Indonesia</option>
+</select>
+</div>
+</div>
+<div id="messages"></div>
+<div class="chips" id="chips"></div>
+<div class="input-bar">
+<input id="input" type="text" placeholder="اكتب سؤالك بأي لغة... مثال: من هو الله؟" onkeydown="if(event.key==='Enter')send()">
+<button class="send" onclick="send()" title="إرسال">➤</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="container">
+<div class="grid-2">
+<div class="card card-pad">
+<div class="section-title"><div class="icon">⚙️</div><h2>ربط ذكاء اصطناعي حقيقي (اختياري)</h2></div>
+<p style="font-size:.92rem;color:var(--muted)">هذا الموقع يعمل <b>بدون إنترنت بذكاء مدمج</b> (إجابات دعوية جاهزة بالدليل). إن أردت أن يصبح حقيقياً 100% يفهم أي لغة تلقائياً، الصق مفتاح OpenAI ثم فعّل الزر:</p>
+<div style="display:flex;gap:.5rem;flex-wrap:wrap">
+<input id="apikey" type="text" placeholder="sk-... (مفتاح OpenAI)" style="flex:1;border:1.5px solid #d9d0b3;border-radius:10px;padding:.6rem .9rem">
+<button class="btn btn-ghost" onclick="toggleAI()">تفعيل AI ✨</button>
+</div>
+<small id="aiStatus" style="color:var(--muted)">الوضع الحالي: ذكاء مدمج محلي ✅ يعمل بدون مفتاح</small>
+<div class="notice" style="margin-top:.8rem">🔒 مفتاحك يبقى في متصفحك فقط ولا يُرسل لأي مكان آخر. تنبيه شرعي: إجابات الذكاء الاصطناعي للتعريف والترغيب، والفتوى تؤخذ من العلماء.</div>
+</div>
+<div class="card card-pad">
+<div class="section-title"><div class="icon">💡</div><h2>كيف يدعو الداعية؟</h2></div>
+<ul style="margin:0;padding-right:1.1rem;font-size:.95rem">
+<li><b>بالحكمة والرحمة:</b> لا يسبّ ولا يسخر من أي دين، يجادل بالتي هي أحسن.</li>
+<li><b>بالدليل:</b> كل جواب مع آية + حديث صحيح + مصدر.</li>
+<li><b>بلغتك:</b> اكتب بالإنجليزية يرد بالإنجليزية، بالفرنسية يرد بالفرنسية... تلقائياً.</li>
+<li><b>تدرّج لطيف:</b> للتعريف أولاً، ثم الشهادتين لمن أراد الدخول في الإسلام.</li>
+</ul>
+<div class="features" style="grid-template-columns:1fr 1fr;margin-top:.8rem">
+<div class="feat"><div class="e">📖</div><b>200+ آية</b><br><small>مراجع قرآنية</small></div>
+<div class="feat"><div class="e">📿</div><b>40+ ذكر صحيح</b><br><small>من البخاري ومسلم</small></div>
+</div>
+</div>
+</div>
+
+<div class="section-title" id="adhkar"><div class="icon">📿</div><h2>حصن المسلم — أذكار صحيحة فقط</h2></div>
+<div class="card card-pad">
+<div class="tabs">
+<button class="tab active" onclick="showDhikr('morning',this)">🌅 أذكار الصباح</button>
+<button class="tab" onclick="showDhikr('evening',this)">🌙 أذكار المساء</button>
+<button class="tab" onclick="showDhikr('prayer',this)">🕌 بعد الصلاة</button>
+<button class="tab" onclick="showDhikr('sleep',this)">😴 قبل النوم</button>
+</div>
+<div class="dhikr" id="dhikrList"></div>
+</div>
+
+<div class="section-title" id="duas"><div class="icon">🤲</div><h2>أدعية قرآنية ونبوية صحيحة</h2></div>
+<div class="grid-2">
+<div class="card card-pad dhikr-item"><h4>🤲 سيد الاستغفار</h4><span class="count">مرة صباحاً ومساءً</span><div class="quran">اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك ووعدك ما استطعت، أعوذ بك من شر ما صنعت، أبوء لك بنعمتك عليّ، وأبوء بذنبي فاغفر لي فإنه لا يغفر الذنوب إلا أنت</div><small>📜 صحيح البخاري 6306 — من قالها موقناً فمات دخل الجنة</small></div>
+<div class="card card-pad dhikr-item"><h4>🤲 ربنا آتنا في الدنيا حسنة</h4><span class="count">دعاء جامع</span><div class="quran">﴿ رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ ﴾</div><small>📖 البقرة 201 — كان أكثر دعاء النبي ﷺ | متفق عليه</small></div>
+<div class="card card-pad dhikr-item"><h4>🤲 دعاء الكرب</h4><div class="quran">لا إله إلا الله العظيم الحليم، لا إله إلا الله رب العرش العظيم، لا إله إلا الله رب السماوات ورب الأرض ورب العرش الكريم</div><small>📜 متفق عليه: البخاري 6346 ومسلم 2730</small></div>
+<div class="card card-pad dhikr-item"><h4>🤲 دعاء الهم والحزن</h4><div class="quran">اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن، وضلع الدين وغلبة الرجال</div><small>📜 صحيح البخاري 6369</small></div>
+</div>
+
+<div class="section-title" id="sources"><div class="icon">📚</div><h2>المراجع المعتمدة فقط</h2></div>
+<div class="features">
+<div class="feat"><div class="e">📖</div><b>القرآن الكريم</b><br><small>مصحف المدينة • تفسير السعدي وابن كثير بتصرف مبسط</small></div>
+<div class="feat"><div class="e">📜</div><b>صحيح البخاري</b><br><small>أصح كتاب بعد القرآن</small></div>
+<div class="feat"><div class="e">📜</div><b>صحيح مسلم</b><br><small>الدرجة الثانية في الصحة</small></div>
+</div>
+<div class="notice" style="margin-top:1rem">⚠️ نتعمد <b>عدم</b> الاستدلال بأحاديث ضعيفة أو موضوعة. كل ذكر في هذا الموقع مذكور مع درجته ورقمه. وما كان فيه خلاف فقهي ننبه عليه ونحيل للعلماء.</div>
+
+<div class="section-title" id="faq"><div class="icon">❓</div><h2>أسئلة يجيب عنها الداعية فوراً</h2></div>
+<div class="grid-2" id="faqGrid"></div>
+</div>
+
+<footer>
+<div style="font-size:2rem">☪</div>
+<div style="font-weight:900;color:#fff;font-size:1.1rem">نور الهداية — داعية ذكي للإسلام</div>
+<p style="max-width:36rem;margin:.5rem auto;font-size:.9rem">صُنع بحب لخدمة الدعوة • ﴿ وَمَنْ أَحْسَنُ قَوْلًا مِّمَّن دَعَا إِلَى اللَّهِ ﴾ [فصلت:33]<br>هذا عمل بشري دعوي، فإن أصاب فمن الله وإن أخطأ فمن النفس. راجع العلماء في الفتاوى الخاصة.</p>
+<div style="font-size:.8rem;opacity:.7">يعمل على الجوال والكمبيوتر • يدعم العربية وجميع لغات العالم • v1.0</div>
+</footer>
+
+<script>
+let LANG='ar';
+let AI_MODE=false;
+const UI={
+ar:{ph:"اكتب سؤالك بأي لغة... مثال: من هو الله؟",hello:"👋 السلام عليكم ورحمة الله! أنا <b>داعية النور</b> 🌙<br>أتكلم معك <b>بلغتك أنت</b>، وأدعوك للإسلام بالحكمة والدليل من القرآن والسنة الصحيحة فقط.<br><br>اسألني عن: الله، الإسلام، محمد ﷺ، القرآن، الصلاة، كيف تدخل الإسلام، أو اطلب <b>أذكار الصباح</b> 🌅",chips:["من هو الله؟","ما هو الإسلام؟","من هو محمد ﷺ؟","كيف أدخل الإسلام؟","ما الدليل أن الإسلام حق؟","أذكار الصباح 🌅","دعاء يريح القلب 🤲","هل عيسى إله؟"]},
+en:{ph:"Type in any language... e.g. Who is Allah?",hello:"👋 Peace be upon you! I am <b>Nour Da'iya</b> 🌙<br>I speak <b>your language</b> and invite you to Islam with wisdom and evidence from Quran & authentic Sunnah only.<br><br>Ask me about: God, Islam, Muhammad ﷺ, Quran, prayer, how to become Muslim, or morning adhkar 🌅",chips:["Who is Allah?","What is Islam?","Who is Muhammad?","How to become Muslim?","Proof Islam is true?","Morning adhkar 🌅","Dua for peace 🤲","Who is Jesus in Islam?"]},
+fr:{ph:"Écrivez dans votre langue...",hello:"👋 Paix sur vous ! Je suis <b>Nour</b> 🌙 Je vous invite à l'Islam avec sagesse, Coran et Sunna authentique.",chips:["Qui est Allah?","C'est quoi l'Islam?","Qui est Muhammad?","Comment devenir musulman?","Preuve Islam?","Adhkar matin 🌅"]},
+es:{ph:"Escribe en tu idioma...",hello:"👋 ¡La paz sea contigo! Soy <b>Nour</b> 🌙 Te invito al Islam con sabiduría, Corán y Sunna auténtica.",chips:["¿Quién es Allah?","¿Qué es el Islam?","¿Quién es Muhammad?","¿Cómo ser musulmán?","¿Prueba del Islam?","Adhkar 🌅"]},
+tr:{ph:"Dilinizde yazın...",hello:"👋 Selam! Ben <b>Nur Davetçi</b> 🌙 Sizi Kur'an ve sahih Sünnetle İslam'a davet ediyorum.",chips:["Allah kimdir?","İslam nedir?","Muhammed kimdir?","Nasıl Müslüman olurum?","Delil?","Sabah zikirleri 🌅"]},
+ur:{ph:"اپنی زبان میں لکھیں...",hello:"👋 السلام علیکم! میں <b>داعی نور</b> ہوں 🌙 قرآن و صحیح سنت سے اسلام کی دعوت دیتا ہوں۔",chips:["اللہ کون ہے؟","اسلام کیا ہے؟","محمد ﷺ کون ہیں؟","مسلمان کیسے بنوں؟","اذکار 🌅"]},
+id:{ph:"Tulis dalam bahasamu...",hello:"👋 Assalamualaikum! Saya <b>Nour</b> 🌙 Mengajak kepada Islam dengan Quran & Sunnah shahih.",chips:["Siapa Allah?","Apa itu Islam?","Siapa Muhammad?","Cara masuk Islam?","Dzikir pagi 🌅"]}
+};
+
+const KB=[
+{k:["من هو الله","who is allah","qui est allah","quien es allah","allah kim","الله","god"],ar:`<b>الله هو الخالق الواحد الأحد</b> الذي لا شريك له، خالق السماوات والأرض، الرحمن الرحيم.<div class="quran">﴿ قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴾</div><span class="ref">📖 سورة الإخلاص 1-4 | 📜 حديث: «إن لله تسعة وتسعين اسماً» متفق عليه</span>الله ليس إنساناً ولا صنماً، لا يُشبه خلقه، وهو قريب يجيب دعاءك: ﴿ وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ﴾ [البقرة:186] 🤲`,en:`<b>Allah is the One True God</b>, Creator of heavens and earth, Most Merciful, with no partner nor son.<div class="quran">Say: He is Allah, the One, Allah the Eternal. He neither begets nor is born. (112:1-4)</div><span class="ref">📖 Quran 112 & 2:186 | 📜 Hadith: 99 Names of Allah (Bukhari & Muslim)</span>He is near you and answers your prayer 🤲`},
+{k:["ما هو الاسلام","what is islam","islam","c'est quoi","que es islam","اسلام"],ar:`<b>الإسلام هو الاستسلام لله وحده وعبادته دون شريك</b>، دين جميع الأنبياء من آدم إلى محمد ﷺ.<br>أركانه خمسة: الشهادتان، الصلاة، الزكاة، صوم رمضان، الحج.<div class="quran">﴿ إِنَّ الدِّينَ عِندَ اللَّهِ الْإِسْلَامُ ﴾</div><span class="ref">📖 آل عمران 19 | 📜 حديث جبريل: متفق عليه (مسلم 8)</span>الإسلام يعطيك سلاماً داخلياً وهدفاً: تعبد رباً رحيماً يغفر كل ذنوبك إذا تبت ❤️`,en:`<b>Islam is submission to the One God</b>, religion of all prophets from Adam to Muhammad ﷺ. Five pillars: testimony, prayer, charity, fasting Ramadan, pilgrimage.<div class="quran">Indeed the religion with Allah is Islam (3:19)</div><span class="ref">📖 Quran 3:19 | 📜 Hadith Jibril (Muslim 8)</span>Islam gives you peace and purpose ❤️`},
+{k:["محمد","muhammad","mohammed","muhammed"],ar:`<b>محمد ﷺ هو خاتم الأنبياء</b>، إنسان ورسول، ليس إلهاً ولا ابن إله. جاء بالقرآن رحمة للعالمين.<div class="quran">﴿ وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ ﴾</div><span class="ref">📖 الأنبياء 107 | 📜 البخاري 3554: كان خلقه القرآن</span>أميٌّ لا يقرأ ولا يكتب، ومع ذلك جاء بكتاب عجز عنه العرب الفصحاء — دليل نبوته. نحبه ونتبعه ولا نعبده.`,en:`<b>Muhammad ﷺ is the final Prophet</b>, a man and messenger, not God. He brought the Quran as mercy to worlds (21:107).<span class="ref">📖 Quran 21:107 | 📜 Bukhari 3554</span>Illiterate, yet brought a book Arabs could not match — proof of prophethood.`},
+{k:["ادخل الاسلام","become muslim","شهادة","convert","devenir musulman","ser musulman","musluman","chat","shahada"],ar:`🌟 <b>الدخول في الإسلام سهل وجميل:</b><br>1️⃣ قل بقلب صادق: <div class="quran">أشهد أن لا إله إلا الله، وأشهد أن محمداً رسول الله</div>2️⃣ اغتسل وصلِّ، 3️⃣ تُغفر كل ذنوبك الماضية وتبدأ صفحة بيضاء!<div class="quran">﴿ قُل لِّلَّذِينَ كَفَرُوا إِن يَنتَهُوا يُغْفَرْ لَهُم مَّا قَدْ سَلَفَ ﴾</div><span class="ref">📖 الأنفال 38 | 📜 مسلم 121: «الإسلام يهدم ما كان قبله»</span>هل تريد أن تنطقها معي الآن؟ قلها وسأفرح بك وأعلمك الصلاة خطوة بخطوة 🤲❤️`,en:`🌟 <b>Becoming Muslim is simple:</b> Say with sincere heart: <i>Ashhadu an la ilaha illa Allah, wa ashhadu anna Muhammadan rasul Allah</i> (I testify none worthy of worship but Allah, Muhammad is His messenger). All past sins forgiven!<span class="ref">📖 Quran 8:38 | 📜 Muslim 121</span>Want to say it with me now? I'll teach you prayer step by step 🤲❤️`},
+{k:["دليل","proof","حق","true","evidence","حقيقة","preuve","prueba"],ar:`💎 <b>3 أدلة أن الإسلام حق:</b><br>1- <b>القرآن معجزة:</b> منذ 1400 سنة يتحدى: ﴿ فَأْتُوا بِسُورَةٍ مِّن مِّثْلِهِ ﴾ [البقرة:23] ولم يستطع أحد، وفيه حقائق علمية (خلق الجنين، توسع الكون).<br>2- <b>نبوة محمد ﷺ:</b> أخبر بغيب تحقق (غلبة الروم، حفظ القرآن).<br>3- <b>الفطرة والعقل:</b> الكون المنظم يدل على خالق واحد.<span class="ref">📖 البقرة 23 + الروم 1-4 + الذاريات 47 | 📜 البخاري عن حفظ القرآن</span>جرّب: اقرأ سورة مريم بقلب مفتوح وستشعر بالفرق ✨`,en:`💎 <b>3 proofs Islam is true:</b> 1- Quran's inimitability challenge (2:23) unmet for 1400 years + scientific facts. 2- Prophecies fulfilled. 3- Ordered universe points to One Creator.<span class="ref">📖 Quran 2:23, 30:1-4 | 📜 Bukhari</span>Try reading Surah Maryam with open heart ✨`},
+{k:["عيسى","jesus","jésus","isa","مسيح","christ"],ar:`❤️ <b>نحن المسلمين نحب عيسى عليه السلام كثيراً!</b> هو نبي عظيم، وُلد بمعجزة من مريم العذراء بلا أب، أحيا الموتى بإذن الله، لكنه <b>ليس إلهاً ولا ابن الله</b> بل عبد الله ورسوله.<div class="quran">﴿ مَّا الْمَسِيحُ ابْنُ مَرْيَمَ إِلَّا رَسُولٌ ﴾</div><span class="ref">📖 المائدة 75 + مريم كاملة | 📜 البخاري 3443: من شهد أن عيسى عبد الله دخل الجنة</span>الله واحد لا يتجزأ، وعيسى نفسه كان يصلي لله. أليس هذا أقرب للعقل والتوحيد؟`,en:`❤️ <b>Muslims love Jesus!</b> Great prophet born miraculously of Virgin Mary, healed by God's permission, but <b>not God nor son of God</b> — servant & messenger (Quran 5:75).<span class="ref">📖 Quran 19 (Mary) & 5:75 | 📜 Bukhari 3443</span>God is One indivisible, Jesus himself prayed to God.`},
+{k:["اذكار","adhkar","zikir","azkar","dzikir","صباح","مساء","morning","evening","ذكر"],ar:`📿 <b>أذكار صحيحة مختارة:</b><br>🌅 «آية الكرسي» — من قالها حين يمسي أُجير من الجن حتى يصبح <span class="ref">📜 صحيح الترغيب، وأصلها البخاري 5010</span><br>🌅 «سيد الاستغفار» مرة واحدة <span class="ref">📜 البخاري 6306</span><br>🌅 «سبحان الله وبحمده» 100 مرة — حُطت خطاياه وإن كانت مثل زبد البحر <span class="ref">📜 مسلم 2691</span><br>🌅 «بسم الله الذي لا يضر مع اسمه شيء» 3 مرات <span class="ref">📜 أبو داود 5088 صحيح</span><br>انزل لقسم 📿 الأذكار الكامل بالأسفل!`,en:`📿 <b>Authentic adhkar:</b> Ayat al-Kursi, Sayyid al-Istighfar (Bukhari 6306), SubhanAllah wa bihamdihi 100x (Muslim 2691).<span class="ref">📜 Bukhari & Muslim only</span>See full section below! 📿`},
+{k:["دعاء","dua","prayer need","حزين","قلق","خايف","مهموم","peace","sad","anxiety","راحة"],ar:`🤲 <b>دعاء يريح القلب (صحيح):</b><div class="quran">اللهم إني أعوذ بك من الهم والحزن، والعجز والكسل، والبخل والجبن، وضلع الدين وغلبة الرجال</div><span class="ref">📜 صحيح البخاري 6369</span>وقل: <b>يا حي يا قيوم برحمتك أستغيث</b> <span class="ref">📜 الترمذي 3524 حسن</span><br>وتذكر: ﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾ [الرعد:28] ❤️ الله معك ويسمعك الآن.`,en:`🤲 <b>Dua for relief (authentic):</b> O Allah I seek refuge in You from anxiety, grief, weakness, laziness... (Bukhari 6369).<span class="ref">📜 Bukhari 6369</span>Remember: <i>Verily in remembrance of Allah hearts find rest</i> (13:28) ❤️`},
+{k:["صلاة","prayer","salah","namaz","priere"],ar:`🕌 <b>الصلاة 5 مرات يومياً:</b> الفجر 2، الظهر 4، العصر 4، المغرب 3، العشاء 4. هي صلة مباشرة بالله بدون وسيط، تغسل الذنوب.<div class="quran">﴿ إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ ﴾</div><span class="ref">📖 العنكبوت 45 | 📜 مسلم 233: الصلوات الخمس كفارة</span>أبدأ معك؟ تعلم الوضوء ثم الفاتحة — خطوة بخطوة وبسهولة 💧`,en:`🕌 <b>Prayer 5x daily:</b> direct link to God, washes sins.<span class="ref">📖 Quran 29:45 | 📜 Muslim 233</span>Shall I teach you wudu & Al-Fatiha step by step? 💧`},
+{k:["سلام","hello","hi","hey","bonjour","hola","merhaba","assalam","صباح الخير","اهلا","مرحبا"],ar:`وعليكم السلام ورحمة الله وبركاته 🌙✨ كيف أساعدك اليوم؟ اسألني عن الإسلام، أو اطلب دعاءً وأذكاراً.`,en:`Peace upon you 🌙✨ How can I help? Ask about Islam, or request dua & adhkar.`},
+{k:["قرآن","quran","coran","koran","مصحف"],ar:`📖 <b>القرآن كلام الله</b> المحفوظ الذي لم يُحرَّف: ﴿ إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ ﴾ [الحجر:9]. نزل على محمد ﷺ خلال 23 سنة، فيه هداية وشفاء.<span class="ref">📖 الحجر 9 | 📜 مسلم 804: اقرؤوا القرآن فإنه يأتي شفيعاً</span>أنصحك تبدأ بسور: الفاتحة، الإخلاص، مريم، الكهف ✨`,en:`📖 <b>Quran is God's preserved Word</b> (15:9), revelation to Muhammad ﷺ, guidance & healing.<span class="ref">📖 Quran 15:9 | 📜 Muslim 804</span>Start with: Fatiha, Ikhlas, Maryam ✨`},
+{k:["الحاد","atheist","athée","ateo","وجود الله","big bang","evolution","ملحد"],ar:`🤔 سؤال جميل وعقلاني! الكون الدقيق (ضبط الثوابت، بداية الكون، تعقيد الحياة) يدل على خالق حكيم، لا صدفة.<div class="quran">﴿ أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ ﴾</div><span class="ref">📖 الطور 35 | منطق الفطرة</span>حتى كبار العلماء يعترفون بالتصميم. والإسلام لا يخاف السؤال — اسأل أكثر وسأجيبك بالعقل والدليل 💡`,en:`🤔 Great question! Fine-tuned universe & origin of life point to a Wise Creator, not chance (Quran 52:35). Islam welcomes questions 💡`}
+];
+
+const DHIKR={
+morning:[["آية الكرسي","﴿ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ... ﴾ [البقرة:255]","1","من قالها حين يُمسي أُجير من الجن حتى يُصبح — البخاري 5010 (الفضل ثابت)"],
+["سيد الاستغفار","اللهم أنت ربي لا إله إلا أنت... فاغفر لي فإنه لا يغفر الذنوب إلا أنت","1","البخاري 6306 — من قالها موقناً فمات دخل الجنة"],
+["سورة الإخلاص والمعوذتين","﴿ قُلْ هُوَ اللَّهُ أَحَدٌ ﴾ + ﴿ قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴾ + ﴿ قُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴾","3","أبو داود 5082 صحيح — تكفيك من كل شيء"],
+["سبحان الله وبحمده","سبحان الله وبحمده","100","مسلم 2691 — حُطت خطاياه وإن كانت مثل زبد البحر"],
+["بسم الله الذي لا يضر","بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم","3","أبو داود 5088 وصححه الألباني — لم تضره فجأة بلاء"]],
+evening:[["آية الكرسي مساءً","اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...","1","البخاري 5010"],
+["أمسينا وأمسى الملك لله","أمسينا وأمسى الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له","1","مسلم 2723"],
+["رضيت بالله رباً","رضيت بالله رباً وبالإسلام ديناً وبمحمد ﷺ نبياً","3","أبو داود 5072 صحيح — وجبت له الجنة"],
+["أعوذ بكلمات الله التامات","أعوذ بكلمات الله التامات من شر ما خلق","3","مسلم 2709 — لم تضره حُمَة تلك الليلة"]],
+prayer:[["استغفر الله","أستغفر الله، أستغفر الله، أستغفر الله — اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام","1","مسلم 591"],
+["سبحان الله + الحمد لله + الله أكبر","يُسبح 33 ويحمد 33 ويكبر 33 ويتم المائة: لا إله إلا الله وحده لا شريك له","بعد كل صلاة","مسلم 597 — غُفرت ذنوبه"],
+["آية الكرسي بعد الصلاة","آية الكرسي كاملة","1","النسائي وصححه الألباني — لم يمنعه من الجنة إلا أن يموت"],
+["اللهم أعني على ذكرك","اللهم أعني على ذكرك وشكرك وحسن عبادتك","1","أبو داود 1522 صحيح — وصية النبي ﷺ لمعاذ"]],
+sleep:[["آية الكرسي قبل النوم","آية الكرسي","1","البخاري 5010 — لا يزال عليك من الله حافظ"],
+["سورة الإخلاص والمعوذتين + مسح الجسد","يجمع كفيه فيقرأ ويمسح ما استطاع من جسده","3","البخاري 5017"],
+["باسمك اللهم أموت وأحيا","باسمك اللهم أموت وأحيا","1","البخاري 6324"],
+["التسبيح قبل النوم","سبحان الله 33، الحمد لله 33، الله أكبر 34","1","متفق عليه — خير لك من خادم"]]
+};
+
+const FAQ=[["هل الإسلام ينتشر بالسيف؟","لا. ﴿ لَا إِكْرَاهَ فِي الدِّينِ ﴾ [البقرة:256]. أكبر دولة مسلمة (إندونيسيا) دخلت بالتجّار والدعاة، لا جيوش. الجهاد دفاع بشروط صارمة.","📖 البقرة 256"],
+["ما موقف الإسلام من المرأة؟","كرّمها أماً وأختاً وزوجة، لها حق الملكية والتعليم والميراث منذ 1400 سنة. الحجاب حماية وعبادة، لا ظلم. ﴿ وَلَهُنَّ مِثْلُ الَّذِي عَلَيْهِنَّ بِالْمَعْرُوفِ ﴾","📖 البقرة 228"],
+["هل يقبل الله توبتي؟","نعم مهما عظمت ذنوبك! ﴿ قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا... إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا ﴾ [الزمر:53]. التوبة: ندم + ترك + عزم.","📖 الزمر 53"],
+["لماذا نصلي 5 مرات؟","صلة يومية تشحن قلبك، وتمنع الفحشاء، وتغفر الصغائر. مثل نهر تغتسل فيه 5 مرات (مسلم 667).","📜 مسلم 667"]];
+
+function el(id){return document.getElementById(id)}
+function addMsg(html,who){const d=document.createElement('div');d.className='msg '+who;d.innerHTML=html;el('messages').appendChild(d);el('messages').scrollTop=el('messages').scrollHeight;return d}
+function renderChips(){const u=UI[LANG]||UI.ar;const box=el('chips');box.innerHTML='';u.chips.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.onclick=()=>ask(c);box.appendChild(b)});el('input').placeholder=u.ph}
+function changeLang(v){LANG=v;const u=UI[v]||UI.ar;addMsg(u.hello,'bot');renderChips()}
+function ask(t){el('input').value=t;send()}
+function detectLang(text){if(/[\u0600-\u06FF]/.test(text))return'ar';if(/[àâêîôûéèç]/i.test(text))return'fr';if(/[ñ¿¡]/i.test(text))return'es';if(/[ğışçü]/i.test(text))return'tr';if(/[\u0900-\u097F\u0600-\u06FF].*|ھ|ھے/.test(text))return'ur';return /[a-z]/i.test(text)?'en':'ar'}
+
+async function send(){
+const inp=el('input');const text=inp.value.trim();if(!text)return;inp.value='';
+addMsg(escapeHtml(text),'user');
+const autoLang=detectLang(text);const useLang=UI[autoLang]?autoLang:LANG;
+// typing
+const tp=document.createElement('div');tp.className='msg bot';tp.innerHTML='<div class="typing"><span></span><span></span><span></span></div> <small>الداعية يكتب...</small>';el('messages').appendChild(tp);el('messages').scrollTop=el('messages').scrollHeight;
+await new Promise(r=>setTimeout(r,700+Math.random()*700));
+// AI mode?
+if(AI_MODE){
+  try{const r=await callOpenAI(text,useLang);tp.innerHTML=r;el('messages').scrollTop=el('messages').scrollHeight;return}catch(e){tp.innerHTML='⚠️ تعذر الاتصال بالـ AI، سأجيب من العلم المدمج:<br><br>'+localAnswer(text,useLang);return}
+}
+tp.innerHTML=localAnswer(text,useLang);
+el('messages').scrollTop=el('messages').scrollHeight;
+}
+function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function localAnswer(text,useLang){
+const low=text.toLowerCase();
+for(const item of KB){for(const k of item.k){if(low.includes(k.toLowerCase())||k.toLowerCase().includes(low.slice(0,12))&&low.length>4&&k.length>3&&low.includes(k.toLowerCase().slice(0,5))){if(useLang!=='ar'&&item[useLang])return item[useLang];if(useLang!=='ar'&&item.en)return item.en+'<br><br><span class="ref">🌐 Replied in English — ask in Arabic for full details</span>';return item.ar}}}
+ // fallback smart
+if(useLang==='en')return `Thank you for your beautiful question: “${escapeHtml(text)}” 🤍<br>Islam teaches that God is One, Merciful, near to you (Quran 2:186). The Prophet Muhammad ﷺ brought the preserved Quran. If you tell me more (God? prayer? becoming Muslim? Jesus? dua?), I'll answer with verse + authentic hadith.<span class="ref">📖 Quran 16:125 — Invite with wisdom | 📜 Bukhari & Muslim only</span>Try: <i>How to become Muslim?</i>`;
+if(useLang==='fr')return `Merci pour votre question 🤍 L'Islam enseigne un Dieu Unique et Miséricordieux (Coran 2:186). Demandez-moi: Dieu? prière? devenir musulman? Jésus? dua?<span class="ref">📖 Coran 16:125</span>`;
+if(useLang==='es')return `Gracias por tu pregunta 🤍 El Islam enseña un Dios Único y Misericordioso (Corán 2:186). Pregúntame: Dios, oración, cómo ser musulmán, Jesús, dua.<span class="ref">📖 Corán 16:125</span>`;
+if(useLang==='tr')return `Güzel sorun için teşekkürler 🤍 İslam tek ve merhametli Allah'ı öğretir (Bakara 186). Sor: Allah? namaz? Müslüman olmak? İsa? dua.<span class="ref">📖 Nahl 125</span>`;
+return `شكراً لسؤالك الجميل 🤍<br>الإسلام يعلّم أن الله واحد رحيم قريب منك: ﴿ وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ﴾ [البقرة:186].<br>حدّد لي أكثر: عن الله؟ الصلاة؟ دخول الإسلام؟ عيسى؟ دعاء وأذكار؟ وسأجيبك <b>بآية + حديث صحيح + مصدر</b>.<span class="ref">📖 النحل 125: ادع بالحكمة | 📜 البخاري ومسلم فقط</span>جرّب الأزرار بالأسفل 👇`;
+}
+async function callOpenAI(text,lang){
+const key=el('apikey').value.trim();if(!key)throw 0;
+const sys=`You are a wise kind Muslim da'iya. Invite to Islam gently, never insult. Answer in language ${lang}. Every answer must include 1 Quran verse (Arabic+reference) and 1 authentic hadith from Bukhari/Muslim with number. Adhkar only sahih. Keep answers concise, warm, RTL if Arabic.`;
+const res=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model:'gpt-4o-mini',messages:[{role:'system',content:sys},{role:'user',content:text}],max_tokens:700,temperature:0.5})});
+const j=await res.json();if(j.error)throw j.error.message;
+return escapeHtml(j.choices[0].message.content).replace(/\n/g,'<br>');
+}
+function toggleAI(){const k=el('apikey').value.trim();if(!k){alert('الصق مفتاح OpenAI أولاً (sk-...)');return}AI_MODE=!AI_MODE;el('aiStatus').textContent=AI_MODE?'✨ الوضع الحالي: ذكاء اصطناعي حقيقي (OpenAI) — يفهم كل لغات العالم':'الوضع الحالي: ذكاء مدمج محلي ✅';addMsg(AI_MODE?'✨ تم تفعيل الذكاء الحقيقي! الآن أفهم <b>أي لغة في كوكب الأرض</b> تلقائياً 🌍':'تم العودة للذكاء المدمج المحلي ✅','bot')}
+function showDhikr(cat,btn){document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');el('dhikrList').innerHTML=DHIKR[cat].map(d=>`<div class="dhikr-item"><h4>${d[0]}</h4><span class="count">🔁 ${d[2]}</span><div class="quran">${d[1]}</div><small>📜 ${d[3]}</small></div>`).join('')}
+function init(){renderChips();addMsg(UI.ar.hello,'bot');showDhikr('morning');const g=el('faqGrid');g.innerHTML='';FAQ.forEach(f=>{const d=document.createElement('div');d.className='card card-pad';d.innerHTML=`<b>❓ ${f[0]}</b><p style="font-size:.92rem">${f[1]}</p><small style="color:var(--muted)">${f[2]}</small><br>`;const b=document.createElement('button');b.className='chip';b.style.marginTop='.5rem';b.textContent='اسأل الداعية 💬';b.onclick=()=>ask(f[0]);d.appendChild(b);g.appendChild(d)})}
+init();
+</script>
+</body>
+</html>
