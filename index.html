@@ -158,10 +158,23 @@ footer{background:var(--green-900);color:#cfc7a8;padding:2rem 1rem;margin-top:2.
 <div class="grid-2">
 <div class="card card-pad">
 <div class="section-title"><div class="icon">⚙️</div><h2>ربط ذكاء اصطناعي حقيقي (اختياري)</h2></div>
-<p style="font-size:.92rem;color:var(--muted)">هذا الموقع يعمل <b>بدون إنترنت بذكاء مدمج</b> (إجابات دعوية جاهزة بالدليل). إن أردت أن يصبح حقيقياً 100% يفهم أي لغة تلقائياً، الصق مفتاح OpenAI ثم فعّل الزر:</p>
+<p style="font-size:.92rem;color:var(--muted)">هذا الموقع يعمل <b>بدون إنترنت بذكاء مدمج</b> (إجابات دعوية جاهزة بالدليل). ليفهم <b>أي لغة تلقائياً</b> اختر المزود والصق مفتاحك ثم فعّل — يُحفظ في متصفحك فقط وكل مستخدم يضيف مفتاحه الخاص:</p>
+<div style="display:grid;gap:.55rem">
+<label style="font-size:.85rem;font-weight:800">🤖 المزود:
+<select id="provider" onchange="onProviderChange()" style="width:100%;border:1.5px solid #d9d0b3;border-radius:10px;padding:.6rem .9rem;font-weight:800;color:var(--green-900)">
+<option value="openai">OpenAI</option>
+<option value="zai">Z.AI (Zhipu / GLM) ✨</option>
+<option value="custom">مخصص (أي Endpoint متوافق مع OpenAI)</option>
+</select></label>
+<label style="font-size:.85rem;font-weight:800">🔗 الـ Endpoint:
+<input id="endpoint" type="text" dir="ltr" value="https://api.openai.com/v1/chat/completions" style="width:100%;border:1.5px solid #d9d0b3;border-radius:10px;padding:.6rem .9rem;font-size:.85rem" oninput="saveAISettings(true)"></label>
+<label style="font-size:.85rem;font-weight:800">🧠 الموديل:
+<input id="model" type="text" dir="ltr" value="gpt-4o-mini" style="width:100%;border:1.5px solid #d9d0b3;border-radius:10px;padding:.6rem .9rem;font-size:.85rem" oninput="saveAISettings(true)"></label>
 <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-<input id="apikey" type="text" placeholder="sk-... (مفتاح OpenAI)" style="flex:1;border:1.5px solid #d9d0b3;border-radius:10px;padding:.6rem .9rem">
+<input id="apikey" type="password" placeholder="الصق مفتاح الـ API هنا" dir="ltr" style="flex:1;min-width:180px;border:1.5px solid #d9d0b3;border-radius:10px;padding:.6rem .9rem" oninput="saveAISettings(true)">
 <button class="btn btn-ghost" onclick="toggleAI()">تفعيل AI ✨</button>
+<button class="btn btn-ghost" onclick="clearAI()" title="مسح المفتاح">🗑️</button>
+</div>
 </div>
 <small id="aiStatus" style="color:var(--muted)">الوضع الحالي: ذكاء مدمج محلي ✅ يعمل بدون مفتاح</small>
 <div class="notice" style="margin-top:.8rem">🔒 مفتاحك يبقى في متصفحك فقط ولا يُرسل لأي مكان آخر. تنبيه شرعي: إجابات الذكاء الاصطناعي للتعريف والترغيب، والفتوى تؤخذ من العلماء.</div>
@@ -368,18 +381,28 @@ if(useLang==='am')return `ለቆንጆ ጥያቄዎ እናመሰግናለን �
 if(useLang==='fil')return `Salamat sa maganda mong tanong 🤍<br>Ang Islam ay nagtuturo na ang Diyos ay Iisa, Mahabagin at malapit sa iyo (Quran 2:186). Si Propeta Muhammad ﷺ ay nagdala ng preserved na Quran. Sabihin mo pa: tungkol sa Diyos? pagdarasal? paano maging Muslim? Jesus? dua? Sasagutin kita nang may <b>verse + authentic hadith + source</b>.<span class="ref">📖 Quran 16:125 — Anyayahan nang may karunungan | 📜 Bukhari & Muslim lamang</span>Subukan ang mga button sa ibaba 👇`;
 return `شكراً لسؤالك الجميل 🤍<br>الإسلام يعلّم أن الله واحد رحيم قريب منك: ﴿ وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ﴾ [البقرة:186].<br>حدّد لي أكثر: عن الله؟ الصلاة؟ دخول الإسلام؟ عيسى؟ دعاء وأذكار؟ وسأجيبك <b>بآية + حديث صحيح + مصدر</b>.<span class="ref">📖 النحل 125: ادع بالحكمة | 📜 البخاري ومسلم فقط</span>جرّب الأزرار بالأسفل 👇`;
 }
+const PROVIDERS={openai:{endpoint:'https://api.openai.com/v1/chat/completions',model:'gpt-4o-mini'},zai:{endpoint:'https://api.z.ai/api/paas/v4/chat/completions',model:'glm-4.5'},custom:{endpoint:'',model:''}};
+function providerName(v){return v==='zai'?'Z.AI':v==='custom'?'المخصص':'OpenAI'}
+function onProviderChange(){const p=el('provider').value;const d=PROVIDERS[p];if(p!=='custom'&&d){el('endpoint').value=d.endpoint;el('model').value=d.model}saveAISettings(true)}
+function saveAISettings(quiet){try{localStorage.setItem('nour_ai',JSON.stringify({provider:el('provider').value,endpoint:el('endpoint').value.trim(),model:el('model').value.trim(),key:el('apikey').value.trim()}))}catch(e){}if(!quiet&&el('aiStatus')&&!AI_MODE)el('aiStatus').textContent='تم حفظ الإعدادات ✅ اضغط تفعيل AI';}
+function loadAISettings(){try{const s=JSON.parse(localStorage.getItem('nour_ai')||'null');if(!s)return;if(s.provider)el('provider').value=s.provider;if(s.endpoint)el('endpoint').value=s.endpoint;if(s.model)el('model').value=s.model;if(s.key)el('apikey').value=s.key;if(s.key&&el('aiStatus'))el('aiStatus').textContent='تم استعادة مفتاحك المحفوظ ('+providerName(s.provider||'openai')+') ✅ اضغط تفعيل AI'}catch(e){}}
+function clearAI(){el('apikey').value='';try{localStorage.removeItem('nour_ai')}catch(e){}AI_MODE=false;el('aiStatus').textContent='الوضع الحالي: ذكاء مدمج محلي ✅ يعمل بدون مفتاح';addMsg('🗑️ تم مسح المفتاح والعودة للذكاء المدمج ✅','bot')}
 async function callOpenAI(text,lang){
-const key=el('apikey').value.trim();if(!key)throw 0;
+const key=el('apikey').value.trim();const endpoint=(el('endpoint').value||'').trim();const model=(el('model').value||'').trim();
+if(!key)throw 'الصق مفتاح الـ API أولاً';
+if(!endpoint)throw 'أدخل الـ Endpoint أولاً';
+if(!model)throw 'أدخل اسم الموديل أولاً';
 const sys=`You are a wise kind Muslim da'iya. Invite to Islam gently, never insult. Answer in language ${lang}. Every answer must include 1 Quran verse (Arabic+reference) and 1 authentic hadith from Bukhari/Muslim with number. Adhkar only sahih. Keep answers concise, warm, RTL if Arabic.`;
-const res=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model:'gpt-4o-mini',messages:[{role:'system',content:sys},{role:'user',content:text}],max_tokens:700,temperature:0.5})});
-const j=await res.json();if(j.error)throw j.error.message;
-return escapeHtml(j.choices[0].message.content).replace(/\n/g,'<br>');
+const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model:model,messages:[{role:'system',content:sys},{role:'user',content:text}],max_tokens:700,temperature:0.5})});
+const j=await res.json();if(j.error)throw (j.error.message||JSON.stringify(j.error));
+const content=j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content;if(!content)throw 'رد فارغ من المزود';
+return escapeHtml(content).replace(/\n/g,'<br>');
 }
-function toggleAI(){const k=el('apikey').value.trim();if(!k){alert('الصق مفتاح OpenAI أولاً (sk-...)');return}AI_MODE=!AI_MODE;el('aiStatus').textContent=AI_MODE?'✨ الوضع الحالي: ذكاء اصطناعي حقيقي (OpenAI) — يفهم كل لغات العالم':'الوضع الحالي: ذكاء مدمج محلي ✅';addMsg(AI_MODE?'✨ تم تفعيل الذكاء الحقيقي! الآن أفهم <b>أي لغة في كوكب الأرض</b> تلقائياً 🌍':'تم العودة للذكاء المدمج المحلي ✅','bot')}
+function toggleAI(){const k=el('apikey').value.trim();if(!k){alert('الصق مفتاح الـ API أولاً');return}saveAISettings(true);AI_MODE=!AI_MODE;const pn=providerName(el('provider').value);el('aiStatus').textContent=AI_MODE?('✨ الوضع الحالي: ذكاء حقيقي ('+pn+' — '+el('model').value+') — يفهم كل لغات العالم'):'الوضع الحالي: ذكاء مدمج محلي ✅';addMsg(AI_MODE?('✨ تم تفعيل الذكاء الحقيقي ('+pn+')! الآن أفهم <b>أي لغة في كوكب الأرض</b> تلقائياً 🌍'):'تم العودة للذكاء المدمج المحلي ✅','bot')}
 let currentDhikr='morning';
 function dhikrTr(title){const m=[['آية الكرسي','kursi'],['سيد الاستغفار','istighfar'],['الإخلاص','ikhlas'],['سبحان الله وبحمده','subhan'],['بسم الله الذي لا يضر','wisdom'],['رضيت بالله','islam'],['أعوذ بكلمات','preserve'],['اللهم أعني','hearts'],['باسمك اللهم','near'],['التسبيح قبل النوم','subhan'],['أمسينا','evening']];for(const x of m){if(title.includes(x[0])){if(LANG==='ar')return'';const t=QTR[x[1]]&&(QTR[x[1]][LANG]||QTR[x[1]].en);return t?`<div class="quran-tr">🌐 ${t}</div>`:''}}return''}
 function showDhikr(cat,btn){currentDhikr=cat;document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');else{const tabs=document.querySelectorAll('.tab');const map={morning:0,evening:1,prayer:2,sleep:3};if(tabs[map[cat]])tabs[map[cat]].classList.add('active')}el('dhikrList').innerHTML=DHIKR[cat].map(d=>`<div class="dhikr-item"><h4>${d[0]}</h4><span class="count">🔁 ${d[2]}</span><div class="quran">${d[1]}</div>${dhikrTr(d[0])}<small>📜 ${d[3]}</small></div>`).join('')}
-function init(){renderChips();addMsg(UI.ar.hello,'bot');showDhikr('morning');try{refreshStaticTr()}catch(e){}const g=el('faqGrid');g.innerHTML='';FAQ.forEach(f=>{const d=document.createElement('div');d.className='card card-pad';d.innerHTML=`<b>❓ ${f[0]}</b><p style="font-size:.92rem">${f[1]}</p><small style="color:var(--muted)">${f[2]}</small><br>`;const b=document.createElement('button');b.className='chip';b.style.marginTop='.5rem';b.textContent='اسأل الداعية 💬';b.onclick=()=>ask(f[0]);d.appendChild(b);g.appendChild(d)})}
+function init(){try{loadAISettings()}catch(e){}renderChips();addMsg(UI.ar.hello,'bot');showDhikr('morning');try{refreshStaticTr()}catch(e){}const g=el('faqGrid');g.innerHTML='';FAQ.forEach(f=>{const d=document.createElement('div');d.className='card card-pad';d.innerHTML=`<b>❓ ${f[0]}</b><p style="font-size:.92rem">${f[1]}</p><small style="color:var(--muted)">${f[2]}</small><br>`;const b=document.createElement('button');b.className='chip';b.style.marginTop='.5rem';b.textContent='اسأل الداعية 💬';b.onclick=()=>ask(f[0]);d.appendChild(b);g.appendChild(d)})}
 init();
 </script>
 </body>
