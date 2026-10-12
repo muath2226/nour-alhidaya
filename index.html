@@ -29,7 +29,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .btn-ghost{background:#eef4f1;color:var(--green-800)}
 .hero{position:relative;overflow:hidden;background:radial-gradient(1000px 500px at 80% -10%,#1a6a5a 0%,var(--green-900) 45%,#041613 100%);color:#fff;padding:3.2rem 1rem 2.5rem}
 .hero::before{content:"";position:absolute;inset:0;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 L70 50 L110 60 L70 70 L60 110 L50 70 L10 60 L50 50 Z' fill='none' stroke='%23f0d998' stroke-width='1'/%3E%3C/svg%3E");background-size:90px}
-.hero-inner{position:relative;max-width:1100px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+.hero-inner{position:relative;max-width:1200px;margin:auto;display:grid;grid-template-columns:.95fr 1.05fr;gap:2rem;align-items:start}
 @media(max-width:860px){.hero-inner{grid-template-columns:1fr}.nav-links{display:none}}
 .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(240,217,152,.15);border:1px solid rgba(240,217,152,.4);color:var(--gold-light);padding:.35rem .9rem;border-radius:999px;font-size:.85rem;font-weight:700}
 .hero h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.3;margin:1rem 0 .6rem;font-weight:900}
@@ -46,7 +46,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .section-title h2{margin:0;font-size:1.4rem;color:var(--green-900);font-weight:900}
 .section-title .icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--green-900);color:var(--gold-light);font-size:1.3rem}
 /* chat - نسخة محسنة عالية التباين */
-.chat-wrap{display:flex;flex-direction:column;height:640px;max-height:80vh;background:#fff;color:#1a2b26;border-radius:20px;border:1px solid #e6ddc0;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.chat-wrap{display:flex;flex-direction:column;height:780px;max-height:90vh;background:#fff;color:#1a2b26;border-radius:20px;border:1px solid #e6ddc0;box-shadow:0 20px 50px rgba(0,0,0,.35)}
 .hero .chat-wrap{color:#1a2b26}
 .chat-head{background:linear-gradient(135deg,#062a22,#0e5a4a);color:#fff;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.8rem;justify-content:space-between;flex-wrap:wrap;border-radius:20px 20px 0 0}
 .chat-head .status{display:flex;align-items:center;gap:.6rem;color:#fff}
@@ -95,7 +95,7 @@ select{background:#fff;border:1px solid #d9d0b3;border-radius:999px;padding:.45r
 footer{background:var(--green-900);color:#cfc7a8;padding:2rem 1rem;margin-top:2.5rem;text-align:center}
 .kbd{font-size:.8rem;background:#0f2f28;color:#f0d998;padding:.15rem .5rem;border-radius:6px}
 .counter{display:flex;gap:.6rem;align-items:center;font-size:.85rem;color:#e9e2cc}
-@media(max-width:520px){.chat-wrap{height:75vh}.msg{max-width:94%;font-size:.93rem}.input-bar input{font-size:.93rem}}
+@media(max-width:520px){.chat-wrap{height:82vh}.msg{max-width:94%;font-size:.95rem}.input-bar input{font-size:.93rem}}
 </style>
 </head>
 <body>
@@ -105,28 +105,33 @@ footer{background:var(--green-900);color:#cfc7a8;padding:2rem 1rem;margin-top:2.
 <header>
 <nav class="nav">
 <div class="logo"><div class="logo-mark">☪</div><div>نور الهداية<br><small style="font-size:.72rem;font-weight:700;color:var(--muted)">داعية ذكي • 24/7 بأي لغة</small></div></div>
-<div class="nav-links"><a href="#chat">المحادثة</a><a href="#adhkar">الأذكار</a><a href="#duas">أدعية قرآنية</a><a href="#sources">المراجع</a><a href="#faq">أسئلة شائعة</a></div>
-<a href="#chat" style="text-decoration:none"><button class="btn btn-gold">💬 ابدأ الحوار</button></a>
+<div class="nav-links"><a href="#chat" data-pg="nav_chat">المحادثة</a><a href="#adhkar" data-pg="nav_adhkar">الأذكار</a><a href="#duas" data-pg="nav_duas">أدعية قرآنية</a><a href="#sources" data-pg="nav_sources">المراجع</a><a href="#faq" data-pg="nav_faq">أسئلة شائعة</a></div>
+<div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+<select id="pageLang" onchange="setPageLang(this.value)" title="لغة الصفحة / Page language" style="border:1.5px solid #0a3d32">
+<option value="ar">🌐 العربية</option><option value="en">🌐 English</option><option value="fr">🌐 Français</option><option value="es">🌐 Español</option><option value="tr">🌐 Türkçe</option><option value="ur">🌐 اردو</option><option value="id">🌐 Bahasa</option><option value="am">🌐 አማርኛ</option><option value="fil">🌐 Filipino</option>
+</select>
+<a href="#chat" style="text-decoration:none"><button class="btn btn-gold" data-pg="start_btn">💬 ابدأ الحوار</button></a>
+</div>
 </nav>
 </header>
 
 <section class="hero">
 <div class="hero-inner">
 <div>
-<div class="badge">🌍 يتكلم مع أي إنسان • بأي لغة في العالم • بأدب ورحمة</div>
-<h1>داعية ذكي يُعرّف بالإسلام <span>بالقرآن والسنة الصحيحة</span></h1>
-<p>اسأل عن الله، عن الإسلام، عن محمد ﷺ، عن الصلاة، عن الشبهات، عن معنى الحياة... وسيجيبك الداعية بالدليل، مع آية وحديث، وبلغتك أنت. ومعه حصن المسلم الصحيح فقط.</p>
+<div class="badge" data-pg="badge">🌍 يتكلم مع أي إنسان • بأي لغة في العالم • بأدب ورحمة</div>
+<h1 data-pg="hero_title">داعية ذكي يُعرّف بالإسلام <span>بالقرآن والسنة الصحيحة</span></h1>
+<p data-pg="hero_sub">اسأل عن الله، عن الإسلام، عن محمد ﷺ، عن الصلاة، عن الشبهات، عن معنى الحياة... وسيجيبك الداعية بالدليل، مع آية وحديث، وبلغتك أنت. ومعه حصن المسلم الصحيح فقط.</p>
 <div class="hero-features">
 <span class="pill">📖 القرآن الكريم</span><span class="pill">📜 البخاري ومسلم فقط</span><span class="pill">🤲 أذكار صحيحة 100%</span><span class="pill">🗣️ عربي + English + Français + Español + Türkçe + اردو + Bahasa + አማርኛ + Filipino</span>
 </div>
 <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.6rem">
-<button class="btn btn-gold" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">تحدث الآن — Talk now</button>
-<button class="btn btn-ghost" onclick="document.getElementById('adhkar').scrollIntoView({behavior:'smooth'})">📿 أذكار اليوم</button>
+<button class="btn btn-gold" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})" data-pg="talk_btn">تحدث الآن — Talk now</button>
+<button class="btn btn-ghost" onclick="document.getElementById('adhkar').scrollIntoView({behavior:'smooth'})" data-pg="adhkar_btn">📿 أذكار اليوم</button>
 </div>
 <div class="counter" style="margin-top:.9rem"><span class="dot"></span> متصل الآن ويدعو بالحكمة والموعظة الحسنة — ﴿ ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ ﴾ [النحل:125]</div>
 </div>
 <div>
-<div class="card chat-wrap" id="chat" style="height:560px">
+<div class="card chat-wrap" id="chat" style="height:720px">
 <div class="chat-head">
 <div class="status"><div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#c9a24a,#f0d998);display:grid;place-items:center;font-size:1.7rem;flex-shrink:0;border:2px solid rgba(255,255,255,.5)">🤖</div><div><div style="font-weight:900;font-size:1.05rem;color:#fff">داعية النور 🌙</div><div style="font-size:.78rem;color:#b8e6d2;display:flex;align-items:center;gap:.35rem"><span class="dot" style="width:8px;height:8px"></span> متصل الآن • يرد بالدليل من القرآن والسنة</div></div></div>
 <div class="lang-row">
@@ -270,7 +275,19 @@ const FAQ=[["هل الإسلام ينتشر بالسيف؟","لا. ﴿ لَا إ
 function el(id){return document.getElementById(id)}
 function addMsg(html,who){const d=document.createElement('div');d.className='msg '+who;d.innerHTML=html;el('messages').appendChild(d);el('messages').scrollTop=el('messages').scrollHeight;return d}
 function renderChips(){const u=UI[LANG]||UI.ar;const box=el('chips');box.innerHTML='';u.chips.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.onclick=()=>ask(c);box.appendChild(b)});el('input').placeholder=u.ph}
-function changeLang(v){LANG=v;const u=UI[v]||UI.ar;addMsg(u.hello,'bot');renderChips()}
+function changeLang(v,silent){LANG=v;const u=UI[v]||UI.ar;const s=el('lang');if(s)s.value=v;const p=el('pageLang');if(p)p.value=v;if(!silent)addMsg(u.hello,'bot');renderChips()}
+const PAGE={
+ar:{nav_chat:"المحادثة",nav_adhkar:"الأذكار",nav_duas:"أدعية قرآنية",nav_sources:"المراجع",nav_faq:"أسئلة شائعة",start_btn:"💬 ابدأ الحوار",badge:"🌍 يتكلم مع أي إنسان • بأي لغة في العالم • بأدب ورحمة",hero_title:'داعية ذكي يُعرّف بالإسلام <span>بالقرآن والسنة الصحيحة</span>',hero_sub:"اسأل عن الله، عن الإسلام، عن محمد ﷺ، عن الصلاة، عن الشبهات، عن معنى الحياة... وسيجيبك الداعية بالدليل، مع آية وحديث، وبلغتك أنت. ومعه حصن المسلم الصحيح فقط.",talk_btn:"تحدث الآن — Talk now",adhkar_btn:"📿 أذكار اليوم",dir:"rtl",lang:"ar"},
+en:{nav_chat:"Chat",nav_adhkar:"Adhkar",nav_duas:"Duas",nav_sources:"Sources",nav_faq:"FAQ",start_btn:"💬 Start chat",badge:"🌍 Speaks to anyone • in any world language • with kindness",hero_title:'Smart da\'iya introducing Islam <span>with Quran & authentic Sunnah</span>',hero_sub:"Ask about God, Islam, Muhammad ﷺ, prayer, doubts, meaning of life... answers with verse & hadith, in your own language.",talk_btn:"Talk now",adhkar_btn:"📿 Today's adhkar",dir:"ltr",lang:"en"},
+fr:{nav_chat:"Discussion",nav_adhkar:"Adhkar",nav_duas:"Duas",nav_sources:"Sources",nav_faq:"FAQ",start_btn:"💬 Discuter",badge:"🌍 Parle à chacun • dans sa langue • avec sagesse",hero_title:'Un prédicateur intelligent <span>Coran & Sunna authentique</span>',hero_sub:"Posez vos questions sur Dieu, l'Islam, Muhammad ﷺ, la prière... réponse avec verset et hadith, dans votre langue.",talk_btn:"Discuter",adhkar_btn:"📿 Adhkar du jour",dir:"ltr",lang:"fr"},
+es:{nav_chat:"Chat",nav_adhkar:"Adhkar",nav_duas:"Duas",nav_sources:"Fuentes",nav_faq:"Preguntas",start_btn:"💬 Empezar",badge:"🌍 Habla con todos • en tu idioma • con sabiduría",hero_title:'Predicador inteligente <span>Corán y Sunna auténtica</span>',hero_sub:"Pregunta sobre Dios, el Islam, Muhammad ﷺ, la oración... respuesta con verso y hadiz, en tu idioma.",talk_btn:"Hablar ahora",adhkar_btn:"📿 Adhkar de hoy",dir:"ltr",lang:"es"},
+tr:{nav_chat:"Sohbet",nav_adhkar:"Zikirler",nav_duas:"Dualar",nav_sources:"Kaynaklar",nav_faq:"SSS",start_btn:"💬 Başla",badge:"🌍 Herkesle • kendi dilinde • hikmetle konuşur",hero_title:'İslam\'ı tanıtan akıllı davetçi <span>Kur\'an & sahih Sünnet</span>',hero_sub:"Allah, İslam, Muhammed ﷺ, namaz hakkında sor... ayet ve hadisli cevap, kendi dilinde.",talk_btn:"Hemen konuş",adhkar_btn:"📿 Günün zikirleri",dir:"ltr",lang:"tr"},
+ur:{nav_chat:"گفتگو",nav_adhkar:"اذکار",nav_duas:"دعائیں",nav_sources:"حوالے",nav_faq:"سوالات",start_btn:"💬 گفتگو شروع کریں",badge:"🌍 ہر انسان سے • اس کی زبان میں • حکمت سے بات",hero_title:'اسلام کا تعارف <span>قرآن و صحیح سنت سے</span>',hero_sub:"اللہ، اسلام، محمد ﷺ، نماز کے بارے میں پوچھیں... آیت و حدیث کے ساتھ جواب، آپ کی زبان میں۔",talk_btn:"ابھی بات کریں",adhkar_btn:"📿 آج کے اذکار",dir:"rtl",lang:"ur"},
+id:{nav_chat:"Chat",nav_adhkar:"Dzikir",nav_duas:"Doa",nav_sources:"Sumber",nav_faq:"FAQ",start_btn:"💬 Mulai chat",badge:"🌍 Berbicara dengan siapa pun • bahasamu • penuh hikmah",hero_title:'Dai cerdas <span>Quran & Sunnah shahih</span>',hero_sub:"Tanya tentang Allah, Islam, Muhammad ﷺ, sholat... jawaban dengan ayat & hadits, dalam bahasamu.",talk_btn:"Chat sekarang",adhkar_btn:"📿 Dzikir hari ini",dir:"ltr",lang:"id"},
+am:{nav_chat:"ውይይት",nav_adhkar:"አዝካር",nav_duas:"ዱዓዎች",nav_sources:"ምንጮች",nav_faq:"ጥያቄዎች",start_btn:"💬 ውይይት ጀምር",badge:"🌍 ከማንም ጋር • በቋንቋዎ • በጥበብ ይናገራል",hero_title:'እስልምናን የሚያስተዋውቅ ብልህ ዳዒያ <span>ቁርኣን እና ትክክለኛ ሱና</span>',hero_sub:"ስለ አላህ፣ እስልምና፣ ሙሐመድ ﷺ፣ ሶላት ይጠይቁ... መልስ በአያ እና በሐዲሥ፣ በቋንቋዎ።",talk_btn:"አሁን ተحدث",adhkar_btn:"📿 የዛሬ አዝካር",dir:"ltr",lang:"am"},
+fil:{nav_chat:"Chat",nav_adhkar:"Adhkar",nav_duas:"Dua",nav_sources:"Sources",nav_faq:"FAQ",start_btn:"💬 Simulan",badge:"🌍 Nakikipag-usap sa lahat • sa iyong wika • nang may karunungan",hero_title:'Matalinong dai <span>Quran at tunay na Sunnah</span>',hero_sub:"Magtanong tungkol sa Diyos, Islam, Muhammad ﷺ, pagdarasal... sagot na may verse at hadith, sa iyong wika.",talk_btn:"Mag-chat na",adhkar_btn:"📿 Adhkar ngayon",dir:"ltr",lang:"fil"}
+};
+function setPageLang(v){const t=PAGE[v]||PAGE.ar;document.querySelectorAll('[data-pg]').forEach(n=>{const k=n.getAttribute('data-pg');if(t[k])n.innerHTML=t[k]});document.documentElement.lang=t.lang;document.documentElement.dir=t.dir;changeLang(v,true);addMsg((UI[v]||UI.ar).hello,'bot')}
 function ask(t){el('input').value=t;send()}
 function detectLang(text){if(/[\u1200-\u137F]/.test(text))return'am';if(/[\u0600-\u06FF]/.test(text))return'ar';if(/\b(sino|ano|paano|kumusta|salamat|po|diyos|maging|muslim)\b/i.test(text))return'fil';if(/[àâêîôûéèç]/i.test(text))return'fr';if(/[ñ¿¡]/i.test(text))return'es';if(/[ğışçü]/i.test(text))return'tr';if(/[\u0900-\u097F].*|ھ|ھے/.test(text))return'ur';if(/\b(siapa|apa|bagaimana|cara|masuk|sholat)\b/i.test(text))return'id';return /[a-z]/i.test(text)?'en':'ar'}
 
@@ -278,6 +295,7 @@ async function send(){
 const inp=el('input');const text=inp.value.trim();if(!text)return;inp.value='';
 addMsg(escapeHtml(text),'user');
 const autoLang=detectLang(text);const useLang=UI[autoLang]?autoLang:LANG;
+if(useLang!==LANG){LANG=useLang;const s=el('lang');if(s)s.value=useLang;const p=el('pageLang');if(p)p.value=useLang;renderChips()}
 // typing
 const tp=document.createElement('div');tp.className='msg bot';tp.innerHTML='<div class="typing"><span></span><span></span><span></span></div> <small>الداعية يكتب...</small>';el('messages').appendChild(tp);el('messages').scrollTop=el('messages').scrollHeight;
 await new Promise(r=>setTimeout(r,700+Math.random()*700));
